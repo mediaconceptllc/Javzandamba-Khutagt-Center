@@ -36,6 +36,7 @@ Routing
   - /?page=home
   - /?page=about
   - /?page=courses
+  - /?page=events
   - /?page=charity
   - /?page=donation
   - /?page=news
