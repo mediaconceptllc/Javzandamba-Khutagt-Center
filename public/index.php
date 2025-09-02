@@ -38,6 +38,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function db(): PDO {
     static $pdo = null;
     if ($pdo) return $pdo;
+if ($page === 'news') {
+    $category = $_GET['category'] ?? null;
+    $p = max(1, (int)($_GET['p'] ?? 1));
+    $perPage = 12;
+    try {
+        $posts = App\Models\Post::list($category, $p, $perPage);
+    } catch (\Throwable $e) {
+        $posts = [];
+    }
+    view('news', ['posts' => $posts, 'category' => $category, 'page' => $p, 'perPage' => $perPage]);
+    exit;
+}
+
+if ($page === 'post') {
+    $id = (int)($_GET['id'] ?? 0);
+    try {
+        $post = $id ? App\Models\Post::find($id) : null;
+    } catch (\Throwable $e) {
+        $post = null;
+    }
+    if (!$post) {
+        http_response_code(404);
+        view('errors/404');
+    } else {
+        view('single/post', ['post' => $post]);
+    }
+    exit;
+}
+
     $host = $_ENV['DB_HOST'] ?? '127.0.0.1';
     $port = $_ENV['DB_PORT'] ?? '3306';
     $db   = $_ENV['DB_DATABASE'] ?? 'javzandamba_center';
