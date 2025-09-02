@@ -26,8 +26,17 @@
         <li class="nav-item"><a class="nav-link" href="/?page=contact">Contact</a></li>
       </ul>
       <div class="d-flex gap-2">
-        <a class="btn btn-outline-secondary btn-sm" href="/?page=login">Login</a>
-        <a class="btn btn-primary btn-sm" href="/?page=signup">Sign Up</a>
+        <?php App\Auth::start(); $u = $_SESSION['user'] ?? null; ?>
+        <?php if ($u): ?>
+          <a class="btn btn-outline-secondary btn-sm" href="/?page=dashboard/member">Dashboard</a>
+          <form method="post" action="/?page=home" class="d-inline">
+            <input type="hidden" name="_action" value="logout">
+            <button class="btn btn-danger btn-sm" type="submit">Logout</button>
+          </form>
+        <?php else: ?>
+          <a class="btn btn-outline-secondary btn-sm" href="/?page=login">Login</a>
+          <a class="btn btn-primary btn-sm" href="/?page=signup">Sign Up</a>
+        <?php endif; ?>
       </div>
     </div>
   </nav>
