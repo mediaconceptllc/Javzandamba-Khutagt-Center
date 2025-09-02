@@ -1,0 +1,5 @@
+:root{--brand:#0d6efd}
+.hero{position:relative;overflow:hidden;border-radius:.75rem}
+.hero iframe{width:100%;aspect-ratio:16/9;border:0}
+.section-title{font-weight:600;margin-bottom:1rem}
+.card-img-top{object-fit:cover;height:180px}
