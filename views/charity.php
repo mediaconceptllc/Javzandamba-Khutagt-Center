@@ -1,7 +1,7 @@
 <h1 class="section-title">Charity</h1>
 <h2>Charity Types</h2>
 <div class="row row-cols-1 row-cols-md-4 g-3 mb-4">
-  <?php foreach (['Education','Health','Community','Other'] as $i =&gt; $type): ?>
+  <?php foreach (['Education','Health','Community','Other'] as $i => $type): ?>
   <div class="col">
     <div class="card h-100">
       <img src="https://picsum.photos/seed/charity<?= $i ?>/600/400" class="card-img-top" alt="">
