@@ -42,6 +42,7 @@ $routes = [
     'home' => fn() => view('home'),
     'about' => fn() => view('about'),
     'courses' => fn() => view('courses'),
+    'events' => fn() => view('events'),
     'charity' => fn() => view('charity'),
     'donation' => fn() => view('donation'),
     'news' => fn() => view('news'),

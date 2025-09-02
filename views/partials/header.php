@@ -19,6 +19,7 @@
         <li class="nav-item"><a class="nav-link" href="/?page=home">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/?page=about">About</a></li>
         <li class="nav-item"><a class="nav-link" href="/?page=courses">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="/?page=events">Events</a></li>
         <li class="nav-item"><a class="nav-link" href="/?page=charity">Charity</a></li>
         <li class="nav-item"><a class="nav-link" href="/?page=donation">Donation</a></li>
         <li class="nav-item"><a class="nav-link" href="/?page=news">News</a></li>
