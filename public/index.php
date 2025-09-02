@@ -8,6 +8,7 @@ $envPath = $root;
 if (file_exists($envPath.'/.env')) {
     Dotenv\Dotenv::createImmutable($envPath)->load();
 }
+App\Auth::start();
 
 function view(string $name, array $data = []) {
     extract($data);
@@ -19,6 +20,20 @@ function view(string $name, array $data = []) {
 function route(): string {
     return $_GET['page'] ?? 'home';
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['_action'] ?? '';
+    if ($action === 'login') {
+        $ok = App\Auth::login(trim($_POST['email'] ?? ''), (string)($_POST['password'] ?? ''));
+        header('Location: ' . ($ok ? '/?page=dashboard/member' : '/?page=login'));
+        exit;
+    }
+    if ($action === 'logout') {
+        App\Auth::logout();
+        header('Location: /?page=home');
+        exit;
+    }
+}
+
 
 function db(): PDO {
     static $pdo = null;
