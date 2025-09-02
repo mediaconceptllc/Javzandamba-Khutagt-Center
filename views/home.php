@@ -1,6 +1,19 @@
+<?php
+$yt = $_ENV['HOME_YOUTUBE_URL'] ?? '';
+$ytId = null;
+if ($yt && preg_match('~(?:v=|youtu\.be/|embed/)([A-Za-z0-9_-]{11})~', $yt, $m)) {
+  $ytId = $m[1];
+}
+?>
 <div class="hero mb-4">
   <div class="ratio ratio-16x9">
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Hero video" allowfullscreen></iframe>
+    <?php if ($ytId): ?>
+      <iframe src="https://www.youtube.com/embed/<?= htmlspecialchars($ytId) ?>?rel=0&amp;modestbranding=1&amp;playsinline=1"
+              title="Hero video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+    <?php else: ?>
+      <div class="d-flex align-items-center justify-content-center text-muted">Invalid YouTube URL</div>
+    <?php endif; ?>
   </div>
 </div>
 

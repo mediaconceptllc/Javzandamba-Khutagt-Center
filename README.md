@@ -7,7 +7,7 @@ Tech
 - Composer (dotenv)
 
 Quick start
-1) Copy .env.example to .env and configure DB connection
+1) Copy .env.example to .env and configure DB connection (and HOME_YOUTUBE_URL for the Home hero)
 2) Run database/schema.sql in your MySQL database
 3) composer install
 4) Serve the public directory with a PHP server (Apache/Nginx or `php -S localhost:8000 -t public`)
