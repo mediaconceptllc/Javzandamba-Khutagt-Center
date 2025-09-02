@@ -11,7 +11,7 @@
 <header class="border-bottom">
   <nav class="navbar navbar-expand-lg container">
     <a class="navbar-brand fw-semibold" href="/?page=home">JKC</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div id="nav" class="collapse navbar-collapse">
@@ -33,4 +33,3 @@
 </header>
 <main class="py-4">
   <div class="container">
-</div></main></body></html>
