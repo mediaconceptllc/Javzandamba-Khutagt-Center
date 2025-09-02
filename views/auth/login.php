@@ -9,7 +9,7 @@
     <input class="form-control" type="password" required>
   </div>
   <div class="col-12 d-flex justify-content-between align-items-center">
-    <a href="#" class="small">Forgot password?</a>
+    <a href="/?page=forgot" class="small">Forgot password?</a>
     <button class="btn btn-primary">Login</button>
   </div>
 </form>

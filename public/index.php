@@ -48,6 +48,7 @@ $routes = [
     'contact' => fn() => view('contact'),
     'login' => fn() => view('auth/login'),
     'signup' => fn() => view('auth/signup'),
+    'forgot' => fn() => view('auth/forgot'),
     'dashboard/admin' => fn() => view('dashboard/admin'),
     'dashboard/member' => fn() => view('dashboard/member'),
 
