@@ -19,7 +19,7 @@ if ($yt && preg_match('~(?:v=|youtu\.be/|embed/)([A-Za-z0-9_-]{11})~', $yt, $m))
 
 <h2 class="section-title">Latest News</h2>
 <div class="row row-cols-1 row-cols-md-3 g-3">
-  <?php for($i=0;$i&lt;3;$i++): ?>
+  <?php for($i=0;$i<3;$i++): ?>
   <div class="col">
     <div class="card h-100">
       <img src="https://picsum.photos/seed/news<?= $i ?>/600/400" class="card-img-top" alt="">
@@ -36,7 +36,7 @@ if ($yt && preg_match('~(?:v=|youtu\.be/|embed/)([A-Za-z0-9_-]{11})~', $yt, $m))
 <h2 class="section-title mt-5">Courses</h2>
 <div id="courseCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <?php for($i=0;$i&lt;3;$i++): ?>
+    <?php for($i=0;$i<3;$i++): ?>
       <div class="carousel-item <?= $i===0?'active':'' ?>">
         <img src="https://picsum.photos/seed/course<?= $i ?>/1200/400" class="d-block w-100" alt="">
         <div class="carousel-caption d-none d-md-block">

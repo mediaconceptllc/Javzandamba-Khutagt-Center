@@ -15,7 +15,7 @@
 
 <h2>Charity Categories</h2>
 <div class="row row-cols-1 row-cols-md-3 g-3">
-  <?php for($i=0;$i&lt;6;$i++): ?>
+  <?php for($i=0;$i<6;$i++): ?>
   <div class="col">
     <div class="card h-100">
       <img src="https://picsum.photos/seed/charityCat<?= $i ?>/600/400" class="card-img-top" alt="">
