@@ -20,6 +20,7 @@ function view(string $name, array $data = []) {
 function route(): string {
     return $_GET['page'] ?? 'home';
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['_action'] ?? '';
     if ($action === 'login') {
@@ -32,12 +33,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: /?page=home');
         exit;
     }
+    if ($action === 'signup') {
+        $ok = App\Auth::register(
+            (string)($_POST['name'] ?? ''),
+            (string)($_POST['email'] ?? ''),
+            (string)($_POST['phone'] ?? ''),
+            (string)($_POST['password'] ?? '')
+        );
+        if ($ok) {
+            App\Auth::login((string)$_POST['email'], (string)$_POST['password']);
+            header('Location: /?page=dashboard/member');
+        } else {
+            header('Location: /?page=signup');
+        }
+        exit;
+    }
 }
 
+$page = route();
 
-function db(): PDO {
-    static $pdo = null;
-    if ($pdo) return $pdo;
 if ($page === 'news') {
     $category = $_GET['category'] ?? null;
     $p = max(1, (int)($_GET['p'] ?? 1));
@@ -66,21 +80,6 @@ if ($page === 'post') {
     }
     exit;
 }
-
-    $host = $_ENV['DB_HOST'] ?? '127.0.0.1';
-    $port = $_ENV['DB_PORT'] ?? '3306';
-    $db   = $_ENV['DB_DATABASE'] ?? 'javzandamba_center';
-    $user = $_ENV['DB_USERNAME'] ?? 'root';
-    $pass = $_ENV['DB_PASSWORD'] ?? '';
-    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
-    $pdo = new PDO($dsn, $user, $pass, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-    return $pdo;
-}
-
-$page = route();
 
 $routes = [
     'home' => fn() => view('home'),

@@ -33,6 +33,25 @@ class Auth
         return true;
     }
 
+    public static function register(string $name, string $email, string $phone, string $password): bool
+    {
+        $name = trim($name);
+        $email = trim(strtolower($email));
+        $phone = trim($phone);
+        if ($name === '' || $email === '' || $password === '') {
+            return false;
+        }
+        $pdo = Database::pdo();
+        $exists = $pdo->prepare('SELECT id FROM users WHERE email = ? LIMIT 1');
+        $exists->execute([$email]);
+        if ($exists->fetch()) {
+            return false;
+        }
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $pdo->prepare('INSERT INTO users (name, email, phone, password_hash, role, created_at) VALUES (?, ?, ?, ?, ?, NOW())');
+        return $stmt->execute([$name, $email, $phone, $hash, 'member']);
+    }
+
     public static function logout(): void
     {
         self::start();
